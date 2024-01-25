@@ -1,17 +1,22 @@
 import { FormControl, Select, MenuItem } from '@mui/material'
+import { useState } from 'react'
 
 interface Props {
   items: string[]
   onFilter: (selected: string) => void
-  selected: string
 }
 
-const ExpenseFilter = ({ items, onFilter, selected }: Props) => {
+const ExpenseFilter = ({ items, onFilter }: Props) => {
+  const [selected, setSelected] = useState(items[0])
+
   return (
     <FormControl margin='normal' fullWidth>
       <Select
         value={selected}
-        onChange={(event) => onFilter(event.target.value)}>
+        onChange={(event) => {
+          setSelected(event.target.value)
+          onFilter(event.target.value)
+        }}>
         {items.map((item) => (
           <MenuItem key={item} value={item}>
             {item}

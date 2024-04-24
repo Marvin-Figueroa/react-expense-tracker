@@ -4,7 +4,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  TextField
+  TextField,
+  Typography
 } from '@mui/material'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -40,7 +41,9 @@ const ExpenseForm = ({ onAddExpense }: Props) => {
           margin='normal'
           {...register('description')}
         />
-        {errors.description && <p>{errors.description.message}</p>}
+        {errors.description && (
+          <Typography color='crimson'>{errors.description.message}</Typography>
+        )}
       </FormControl>
 
       <FormControl fullWidth>
@@ -51,7 +54,9 @@ const ExpenseForm = ({ onAddExpense }: Props) => {
           margin='normal'
           {...register('amount', { valueAsNumber: true })}
         />
-        {errors.amount && <p>{errors.amount.message}</p>}
+        {errors.amount && (
+          <Typography color='crimson'>{errors.amount.message}</Typography>
+        )}
       </FormControl>
 
       <FormControl margin='normal' fullWidth>
@@ -71,7 +76,9 @@ const ExpenseForm = ({ onAddExpense }: Props) => {
             </Select>
           )}
         />
-        {errors.category && <p>{errors.category.message}</p>}
+        {errors.category && (
+          <Typography color='crimson'>{errors.category.message}</Typography>
+        )}
       </FormControl>
 
       <FormControl margin='normal' fullWidth>
